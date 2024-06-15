@@ -1,5 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Goods } from './components/Goods';
 
 const { Header, Content, Footer } = Layout;
 
@@ -43,16 +44,16 @@ const App: React.FC = () => {
         <div
           style={{
             padding: 24,
-            minHeight: 380,
+            minHeight: "50vh",
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+          <Goods />
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        Ant Design ©{new Date().getFullYear()}
       </Footer>
     </Layout>
   );
