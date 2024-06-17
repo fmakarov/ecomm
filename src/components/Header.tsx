@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react'
-import { Flex, Layout } from 'antd';
+import React, { FC, useState } from 'react';
+import { Layout } from 'antd';
 
 const { Header, Footer, Sider, Content } = Layout;
 const Header: FC = () => {

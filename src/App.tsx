@@ -1,19 +1,29 @@
-import React from 'react';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import React, { ReactNode } from 'react';
+import { Layout, Menu } from 'antd';
 import { Goods } from './components/Goods';
+import { Link, Route, Routes } from 'react-router-dom';
+import { ProductDetail } from './components/ProductDetail/ProductDetail.tsx';
+
+interface MenuItem {
+  key: string;
+  label: string | ReactNode;
+}
 
 const { Header, Content, Footer } = Layout;
-
-const items = new Array(3).fill(null).map((_, index) => ({
-  key: String(index + 1),
-  label: `nav ${index + 1}`,
-}));
+const menuNav: MenuItem[] = [
+  {
+    key: '1', label: (
+      <Link to="/">Главная</Link>
+    ),
+  },
+  {
+    key: '2', label: (
+      <Link to="/catalog">Каталог</Link>
+    ),
+  },
+];
 
 const App: React.FC = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
   return (
     <Layout>
       <Header
@@ -26,30 +36,21 @@ const App: React.FC = () => {
           alignItems: 'center',
         }}
       >
-        <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={items}
+          defaultSelectedKeys={['1']}
+          items={menuNav}
           style={{ flex: 1, minWidth: 0 }}
         />
       </Header>
       <Content style={{ padding: '0 48px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
-        <div
-          style={{
-            padding: 24,
-            minHeight: "50vh",
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          <Goods />
+        <div style={{ padding: 24, minHeight: '50vh' }}>
+          <Routes location={location}>
+            <Route path="/" element={<Goods />} />
+            <Route path="/catalog" element={<Goods />} />
+            <Route path="product/:productId" element={<ProductDetail />} />
+          </Routes>
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
