@@ -13,8 +13,8 @@ export const ProductDetail: React.FC = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading product</div>;
 
-  const productItem: IElectronics = Object.values(goods)
-    .find(it => it._id === productId);
+  const productItem: IElectronics | undefined = Object.values(goods as Record<string, IElectronics>)
+    .find(it => it._id.toString() === productId);
 
   if (!productItem) return <div>Product not found</div>;
 

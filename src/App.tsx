@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Layout, Menu } from 'antd';
 import { Goods } from './components/Goods';
 import { Link, Route, Routes } from 'react-router-dom';
-import { ProductDetail } from './components/ProductDetail/ProductDetail.tsx';
+import { ProductDetail } from './components/ProductDetail/ProductDetail';
 
 interface MenuItem {
   key: string;

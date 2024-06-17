@@ -1,5 +1,5 @@
 function checkPriceType(price: number | string): string {
-  let priceCheckString: string = typeof price === 'number' ? price.toString() : price;
+  const priceCheckString: string = typeof price === 'number' ? price.toString() : price;
   if (Number.isNaN(priceCheckString)) {
     return '0';
   }
