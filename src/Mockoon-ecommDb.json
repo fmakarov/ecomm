@@ -1,0 +1,92 @@
+{
+  "uuid": "a78d4e4e-6421-4b06-bce3-4c43e8ce2c5a",
+  "lastMigration": 32,
+  "name": "Ecomm",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "446fa58f-243d-4a81-bf33-abd0b28bdcc1",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "products",
+      "responses": [
+        {
+          "uuid": "d4d7ab16-c5b8-4295-b346-e85f1dd66938",
+          "body": "[\n  {{#repeat 100}}\n    {\n      \"_id\": \"{{faker 'string.uuid'}}\",\n      \"title\": \"{{oneOf (array 'Dell Inspiron' 'HP Pavilion' 'Asus ZenBook' 'Lenovo ThinkPad' 'Apple MacBook Pro' 'Samsung Galaxy Book' 'Apple MacBook Air' 'Toshiba Satellite' 'Sony VAIO')}}\",\n      \"description\": \"{{faker 'lorem.paragraph'}}\",\n      \"price\": {{faker 'number.int' min=50000 max=300000}},\n      \"category\": {{faker 'number.int' min=1 max=4}},\n      \"processor\":\"{{oneOf (array 'Intel Core i5' 'AMD Ryzen 7' 'Qualcomm Snapdragon 855' 'Apple A14 Bionic' 'Nvidia Tegra X1' 'Samsung Exynos 990' 'Huawei Kirin 980' 'MediaTek Helio G90T' 'Intel Core i9' 'AMD Ryzen 5' 'Apple Silicon M3')}} {{faker 'number.int' min=2 max=32}}Core / {{faker 'number.int' min=1.1 max=5}}GHz\",\n      \"color\": [{{#repeat 1 3}}\"{{faker 'color.human'}}\"{{/repeat}}],\n      \"downPayment\": {{boolean}},\n      \"discount\": {{oneOf (array '0' '10' '30')}},\n      \"promotion\": {{boolean}}\n    }\n  {{/repeat}}\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "446fa58f-243d-4a81-bf33-abd0b28bdcc1"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
